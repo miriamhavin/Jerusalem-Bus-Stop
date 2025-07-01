@@ -52,9 +52,11 @@ const galleryData = {
       { id: "ים סוף / צלמונה", coords: [31.80136, 35.22311], img: "images/17.png", fullImg: "images/17.png", analysisImg: "analysis/17.png", sketchImg: "sketch/17.png", graffitiImg: "graffiti/17.png", neighborhood: "רמת אשכול", age: 12,
         signscount: { "עד הניצחון": 0, "מטה משפחות החטופים": 0, "שלטי תחבורה ציבורית": 2, "מדבקות הנצחה": 0, "מודעות פרטיות": 12, "שלטים נגד ביבי": 0, "שלטי חבד": 0, }
       },
-      { id: "האוניברסיטה העברית הר הצופים", coords: [31.79483, 35.24208], img: "images/18.png", fullImg: "images/18.png", analysisImg: "analysis/18.png", sketchImg: "sketch/18.png", graffitiImg: "graffiti/18.png", neighborhood: "הר הצופים", age: 22 },
-      { id: "בית חולים סנט ג'ון", coords: [31.79576, 35.23081], img: "images/19.png", fullImg: "images/19.png", analysisImg: "analysis/19.png", sketchImg: "sketch/19.png", graffitiImg: "graffiti/19.png", neighborhood: "בית צפפא,שרפת", age: 16,
+      { id: "האוניברסיטה העברית הר הצופים", coords: [31.79483, 35.24208], img: "images/18.png", fullImg: "images/18.png", analysisImg: "analysis/18.png", sketchImg: "sketch/18.png", graffitiImg: "graffiti/18.png", neighborhood: "הר הצופים", age: 22,
         signscount: { "עד הניצחון": 0, "מטה משפחות החטופים": 2, "שלטי תחבורה ציבורית": 0, "מדבקות הנצחה": 10, "מודעות פרטיות": 2, "שלטים נגד ביבי": 0, "שלטי חבד": 0, }
+      },
+      { id: "בית חולים סנט ג'ון", coords: [31.79576, 35.23081], img: "images/19.png", fullImg: "images/19.png", analysisImg: "analysis/19.png", sketchImg: "sketch/19.png", graffitiImg: "graffiti/19.png", neighborhood: "בית צפפא,שרפת", age: 16,
+        signscount: { "עד הניצחון": 0, "מטה משפחות החטופים": 0, "שלטי תחבורה ציבורית": 0, "מדבקות הנצחה": 0, "מודעות פרטיות": 4, "שלטים נגד ביבי": 0, "שלטי חבד": 0, }
       },
       { id: "א סאפא / א סלאם", coords: [31.73309, 35.20428], img: "images/20.png", fullImg: "images/20.png", analysisImg: "analysis/20.png", sketchImg: "sketch/20.png", graffitiImg: "graffiti/20.png", neighborhood: "בית צפפא,שרפת", age: 6,
         signscount: { "עד הניצחון": 0, "מטה משפחות החטופים": 0, "שלטי תחבורה ציבורית": 0, "מדבקות הנצחה": 0, "מודעות פרטיות": 2, "שלטים נגד ביבי": 0, "שלטי חבד": 0, }

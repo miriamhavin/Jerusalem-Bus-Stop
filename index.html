@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jerusalem Bus Map</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app-wrapper">
+  <div id="main-container">
+    <main id="map"></main>
+    <aside id="gallery">
+      <button class="close-btn" onclick="document.getElementById('gallery').style.display='none'">×</button>
+      <div id="gallery-images"></div>
+    </aside>
+    <div id="view-mode-bar">
+        <div id="view-mode-label">אפשרויות תצוגה</div>
+        <div class="view-mode-buttons">
+            <button data-mode="color">סוג אוכלוסיה</button>
+            <button data-mode="size">מס׳ שלטים</button>
+            <button data-mode="opacity">גיל שלטים</button>
+            <button data-mode="border">שלט נפוץ</button>
+        </div>
+    </div>
+</div>
+<div class="reader-static" id="reader-static-image" style="display: none;">
+  <img src="" />
+</div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="data.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/esri-leaflet@3.0.11/dist/esri-leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

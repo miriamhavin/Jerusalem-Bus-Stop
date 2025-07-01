@@ -1,0 +1,464 @@
+      body {
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+        font-family: 'Inter', Arial, sans-serif;
+        color: #000000;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+
+      #app-wrapper {
+        height: 100vh;
+        width: 100vw;
+        min-height: 100vh;
+        min-width: 100vw;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      #main-container {
+      display: flex;
+      flex-direction: row;
+      width: 100vw;
+      height: 100vh;
+      min-height: 100vh;
+      min-width: 100vw;
+      position: relative;
+      background: #eee;
+      direction: ltr;
+      }
+        #view-mode-bar {
+        position: absolute;
+        top: 28px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 5000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.56);
+
+        padding: 16px 32px 14px 32px;
+        border-radius: 16px;
+        gap: 16px;
+        min-width: 320px;
+        max-width: 480px;
+        }
+
+        #view-mode-label {
+        margin-bottom: 0;
+        font-size: 1.18em;
+        font-weight: 700;
+        color: #000000;
+        text-align: center;
+        background: none;
+        border-radius: 8px;
+        padding: 0;
+        box-shadow: none;
+        width: 100%;
+        display: block;
+        letter-spacing: 0.5px;
+        }
+        .view-mode-buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 14px;
+        justify-content: center;
+        width: 100%;
+        }
+
+        #view-mode-bar button {
+        font-family: inherit;
+        font-size: 1em;
+        padding: 9px 28px;
+        border-radius: 8px;
+        border: 2.5px solid #bbb;
+        background: #f7faff;
+        color: #000000;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.17s, border 0.17s, color 0.17s;
+        outline: none;
+        box-shadow: 0 2px 8px #296be41a;
+        letter-spacing: 0.5px;
+        }
+
+        #view-mode-bar button.pressed {
+        border: 2.5px solid #296be4;
+        background: linear-gradient(90deg, #eaf1ff 60%, #cde2ff 100%);
+        color: #204366;
+        box-shadow: 0 2px 12px #296be433;
+        }
+
+
+      #gallery {
+      width: 550px;
+      min-width: 330px;
+      max-width: 540px;
+      background: #fff;
+      height: 100vh;
+      overflow-y: auto;
+      box-shadow: -2px 0 14px #0001;
+      z-index: 20;
+      position: relative;
+      display: none;
+      flex-direction: column;
+      }
+      
+
+      #gallery, #gallery * {
+        color: #000000;
+        direction: rtl;
+        text-align: right;
+      }
+
+      #gallery-images {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      min-height: 0;
+      padding: 32px 32px 32px 18px;
+      width: 100%;
+      box-sizing: border-box;
+      }
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: #cccccc;
+        border: none;
+        border-radius: 50%;
+        width: 26px;
+        height: 26px;
+        font-size: 18px;
+        color: #000;
+        cursor: pointer;
+        font-weight: bold;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        transition: background 0.14s;
+      }
+
+      .close-btn:hover {
+        background: #aaaaaa;
+      }
+
+      .bus-info {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      word-break: break-word;
+      position: relative;
+      }
+      .bus-info > *:not(.age-badge-corner):not(.pop-type-label) {
+      width: 100%;
+    }
+      .age-pill {
+      display: inline-block;
+      max-width: 220px;
+      min-width: 40px;
+      padding: 5px 13px;
+      border-radius: 18px;
+      font-size: 1em;
+      margin: 8px 0 10px 0;
+      text-align: right;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      box-sizing: border-box;
+      background: #f2e6c5;
+      color: #473900;
+      letter-spacing: 0.03em;
+    }
+
+
+      .bus-info h3 {
+        margin: 8px 0 14px 0;
+        font-size: 1.11em;
+        font-weight: 700;
+        color: #000000;
+      }
+      #dynamic-legend {
+        direction: rtl;
+        }
+
+        .legend-border-item {
+        display: flex;
+        flex-direction: row;   /* Left-to-right, icon first in HTML = left */
+        background: rgba(255, 255, 255, 0.56);
+        align-items: center;
+        justify-content: flex-end;
+        padding: 8px 0;
+        overflow: visible !important;
+        min-height: 44px; /* adjust as needed for your icon size */
+        }
+
+        .legend-border-item .label {
+        flex: 1;
+        text-align: right;
+        white-space: nowrap;
+        }
+
+        .legend-border-item .icon {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        min-width: 44px;  /* or whatever matches your border icon */
+        margin-left: 12px; /* space between icon and label */
+        }
+
+        .legend-border-item .icon img {
+        display: block;
+        max-width: 44px;   /* adjust for your actual icon */
+        max-height: 44px;
+        width: 44px;
+        height: 44px;
+        object-fit: contain;
+        margin: 0;
+        padding: 0;
+        }
+
+      .pop-type-label {
+      display: inline-block;
+      max-width: 270px;
+      min-width: 40px;
+      padding: 5px 13px 5px 13px;
+      border-radius: 18px;
+      font-size: 1em;
+      margin: 8px 0 10px 0;
+      text-align: right;
+      white-space: normal;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      box-sizing: border-box;
+      }
+
+      .image-outlined {
+        border: 0px solid #ccc;
+        border-radius: 10px;
+        padding: 2px;
+        background: rgba(255, 255, 255, 0.56);
+        max-width: 98%;
+        margin-bottom: 14px;
+      }
+      .image-legend {
+        font-size: 0.9em;
+        color: #555;
+        background: rgba(255, 255, 255, 0.56);
+        margin-top: 4px;
+        margin-bottom: 16px;
+        direction: rtl;
+        text-align: right;
+        line-height: 1.4;
+      }
+
+      #map {
+        flex: 1 1 auto;
+        width: 100%;
+        height: 100vh;
+        min-width: 0;
+        min-height: 100vh;
+        z-index: 1;
+        position: relative;
+      }
+
+      /* Legend */
+      #dynamic-legend {
+        background: rgba(255,255,255,0.56);
+        border-radius: 12px;
+        box-shadow: 0 2px 16px #296be420;
+        border: 1.5px solid #ccc;
+        padding: 16px 20px;
+        min-width: 240px;
+        max-width: 320px;
+        margin-top: 8px;
+        overflow: visible !important;
+    }
+
+      .info.legend {
+      min-width: 240px;    /* increase as needed */
+      max-width: 320px;    /* optional, prevents it getting too big */
+      padding-right: 14px; /* extra space for icons on left */
+      padding-left: 14px;
+    }
+
+    .legend-size-item {
+      display: flex;
+      flex-direction: row;
+      background: rgba(255, 255, 255, 0.56);
+      align-items: center;
+      justify-content: flex-end;
+      padding: 8px 0;
+      overflow: visible !important; /* ensure icons aren't hidden */
+      min-height: 104px; /* equal to the largest bus icon */
+    }
+    .legend-size-item span.label {
+      flex: 1;
+      text-align: right;
+      white-space: nowrap;
+    }
+    .legend-size-item .icon img {
+      display: block;
+      max-width: 92px;
+      max-height: 92px;
+      width: 92px;
+      height: 92px;
+      object-fit: contain;
+      margin: 0;
+      padding: 0;
+    }
+
+    .legend-size-item span.icon {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      min-width: 104px;   /* same as largest icon width */
+      /* No overflow, icon never cut */
+    }
+    .legend-pop-item.legend-active,
+    .legend-size-item.legend-active,
+    .legend-opacity-item.legend-active,
+    .legend-border-item.legend-active,
+    #legend-pop-all.legend-active {
+      background: rgba(255, 255, 255, 0.56);
+      box-shadow: 0 0 0 2.5px #296be4;
+      border-radius: 8px;
+      font-weight: bold;
+      color: #204366;
+      /* Optional: transition for nicer effect */
+      transition: background 0.13s, box-shadow 0.13s;
+    }
+
+
+      /* Popups */
+      .leaflet-control-layers {
+        direction: rtl;
+        text-align: right;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.95em;
+      }
+
+      .leaflet-control-layers-base label,
+      .leaflet-control-layers-overlays label {
+        display: flex;
+        flex-direction: row-reverse; /* checkbox on the left */
+        align-items: center;
+        gap: 6px;
+        margin: 4px 0;
+      }
+
+      .leaflet-popup-close-button {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        z-index: 10000;
+        background-color: #cccccc !important;
+        color: #000 !important;
+        font-size: 16px;
+        font-weight: bold;
+        width: 26px;
+        height: 26px;
+        line-height: 24px;
+        border-radius: 50%;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        border: none;
+      }
+
+      .leaflet-popup-close-button:hover {
+        background-color: #aaaaaa;
+      }
+
+    .leaflet-popup-content-wrapper,
+    .leaflet-popup-tip {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+    }
+
+    .leaflet-popup-content {
+      margin: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-wrapper {
+      position: relative;
+      width: 420px;
+      height: auto;
+    }
+
+    .popup-img {
+      display: block;
+      width: 350px !important;
+      height: auto !important;
+      max-width: 96vw !important;
+      border-radius: 10px;
+      object-fit: contain;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+      /* Tabs */
+      .analysis-tab {
+        background: #eee;
+        border: 2px solid #aaa;
+        font-weight: 600;
+        transition: background 0.1s, border 0.1s;
+        font-size: 1.08em;
+        padding: 10px 30px;
+        border-radius: 8px;
+        border: 1.5px solid #aaa;
+        background: #f0f0f0;
+        color: #000000;
+        cursor: pointer;
+        font-weight: 500;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      }
+
+      .analysis-tab.active,
+      .analysis-tab:hover,
+      .analysis-tab:focus {
+        background: #ffffff;
+        border-color: #296be4;
+        box-shadow: 0 3px 12px rgba(41,107,228,0.1);
+      }
+
+      /* Header */
+      #page-header {
+        width: 100vw;
+        background: #ffffff;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        position: sticky;
+        top: 0;
+        z-index: 4000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #analysis-type-bar {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        padding: 20px 0 18px 0;
+        width: 100%;
+        max-width: 800px;
+        direction: rtl;
+      }
+
+      #analysis-type-bar label {
+        font-size: 1.15em;
+        color: #000000;
+        font-weight: 600;
+        white-space: nowrap;
+      }

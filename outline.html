@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jerusalem Bus Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: #0b0b0b;
+      font-family: 'Inter', Arial, sans-serif;
+      color: #eaeaea;
+    }
+    #app-wrapper {
+      min-height: 100vh;
+      width: 100vw;
+      box-sizing: border-box;
+      background: #121214;
+      display: flex;
+      flex-direction: column;
+    }
+    header#page-header {
+      width: 100vw;
+      background: #191a1d;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      position: sticky;
+      top: 0;
+      z-index: 4000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #analysis-type-bar {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px 0 18px 0;
+      width: 100%;
+      max-width: 800px;
+      direction: rtl;
+    }
+    #analysis-type-tabs {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      direction: ltr;
+    }
+    .analysis-tab {
+      font-size: 1.08em;
+      padding: 10px 30px;
+      border-radius: 8px;
+      border: 1.5px solid #232427;
+      background: #18191b;
+      color: #eaeaea;
+      cursor: pointer;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      outline: none;
+      transition: background 0.13s, color 0.13s, border 0.12s, box-shadow 0.15s;
+    }
+    .analysis-tab.active,
+    .analysis-tab:hover,
+    .analysis-tab:focus {
+      background: #222326;
+      color: #fff;
+      border-color: #296be4;
+      box-shadow: 0 3px 12px rgba(41, 107, 228, 0.12);
+    }
+    #main-container {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: calc(100vh - 68px);
+    }
+    #sidebar {
+      width: 300px;
+      min-width: 240px;
+      background: #18191b;
+      padding: 16px;
+      border-right: 2px solid #262628;
+      overflow-y: auto;
+    }
+    #map {
+      flex: 1;
+      height: 100%;
+      background: #16161a;
+    }
+    #info-panel {
+      width: 340px;
+      max-width: 400px;
+      background: #18191b;
+      padding: 20px;
+      border-left: 2px solid #262628;
+      overflow-y: auto;
+      transition: transform 0.3s ease;
+    }
+    #info-panel.hidden {
+      transform: translateX(100%);
+    }
+    #gallery-images {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .bus-info img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 16px;
+    }
+    .image-outlined {
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      background: #fff;
+      max-width: 100%;
+    }
+    .reader-static {
+      position: fixed;
+      top: 22px;
+      right: 34px;
+      z-index: 5000;
+      background: #18191b;
+      border-radius: 10px;
+      box-shadow: 0 4px 24px #0006;
+      padding: 13px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 80px;
+      min-height: 64px;
+      max-width: 190px;
+      max-height: 160px;
+    }
+    .reader-static img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #212226;
+      max-width: 150px;
+      max-height: 130px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app-wrapper">
+    <header id="page-header">
+      <div id="analysis-type-bar">
+        <div id="analysis-type-tabs">
+          <button class="analysis-tab active" data-type="a">תצלום</button>
+          <button class="analysis-tab" data-type="b">ניתוח</button>
+        </div>
+      </div>
+    </header>
+    <div id="main-container">
+      <aside id="sidebar">
+        <div id="gallery-images"></div>
+      </aside>
+      <main id="map"></main>
+      <aside id="info-panel" class="hidden"></aside>
+    </div>
+    <div class="reader-static" id="reader-static-image" style="display: none;">
+      <img src="" />
+    </div>
+  </div>
+
+  <!-- Load Leaflet and custom JS scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="https://unpkg.com/esri-leaflet@3.0.11/dist/esri-leaflet.js"></script>
+  <script src="data.js"></script>
+  <script src="maps.js"></script>
+  <script src="bus.js"></script>
+  <script src="ui.js"></script>
+</body>
+</html>
